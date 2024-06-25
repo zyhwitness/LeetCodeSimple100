@@ -14,7 +14,7 @@ public class LeetCode1 {
 
     @Test
     public void test() {
-          int[] nums = {2, 5, 8, 9};
+        int[] nums = {2, 5, 8, 9};
         int target = 14;
         System.out.println(Arrays.toString(twoSum2(nums, target)));
     }
