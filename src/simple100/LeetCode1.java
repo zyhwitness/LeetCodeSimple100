@@ -16,7 +16,7 @@ public class LeetCode1 {
     public void test() {
         int[] nums = {2, 5, 8, 9};
         int target = 14;
-        System.out.println(Arrays.toString(twoSum2(nums, target)));
+        System.out.println(Arrays.toString(twoSum3(nums, target)));
     }
 
     public int[] twoSum(int[] nums, int target) {
@@ -37,6 +37,21 @@ public class LeetCode1 {
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[i] + nums[j] == target) {
                     return new int[]{i, j};
+                }
+            }
+        }
+        return null;
+    }
+
+    public int[] twoSum3(int[] nums, int target) {
+        int[] result = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                int sum = nums[i] + nums[j];
+                if (sum == target) {
+                    result[0] = i;
+                    result[1] = j;
+                    return result;
                 }
             }
         }
