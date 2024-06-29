@@ -21,6 +21,7 @@ public class LeetCode27 {
         int index = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != val) {
+                //i每轮循环都+1，而index只有在不等于val时才+1，这样可以让不等于val的数全部移到前面
                 nums[index++] = nums[i];
             }
         }
