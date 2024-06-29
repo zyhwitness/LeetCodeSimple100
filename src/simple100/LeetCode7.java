@@ -12,8 +12,8 @@ public class LeetCode7 {
 
     @Test
     public void test() {
-        int x = -1566859589;
-        System.out.println(reverse(x));
+        int x = -15668589;
+        System.out.println(reverse1(x));
     }
 
     public int reverse(int x) {
@@ -35,7 +35,28 @@ public class LeetCode7 {
         //返回结果
         try {
             return Integer.parseInt(prefex + converse);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
+
+    public int reverse1(int x) {
+        String context = x + "";
+        String convert = "";
+        //若为负数，反转取到倒数第二位
+        try {
+            if (x < 0) {
+                for (int i = context.length() - 1; i > 0; i--) {
+                    convert += context.charAt(i);
+                }
+                return Integer.parseInt("-" + convert);
+            } else {
+                for (int i = context.length() - 1; i >= 0; i--) {
+                    convert += context.charAt(i);
+                }
+                return Integer.parseInt(convert);
+            }
+        } catch (NumberFormatException e) {
             return 0;
         }
     }
