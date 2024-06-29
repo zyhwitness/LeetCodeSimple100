@@ -53,4 +53,16 @@ public class LeetCode9 {
         }
         return true;
     }
+
+    public boolean isPalindrome3(int x) {
+        String context = x + "";
+        String convert = "";
+        for (int i = context.length() - 1; i >= 0; i--) {
+            convert += context.charAt(i);
+        }
+        if (context.equals(convert)) {
+            return true;
+        }
+        return false;
+    }
 }
