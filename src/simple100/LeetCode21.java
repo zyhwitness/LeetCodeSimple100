@@ -16,11 +16,11 @@ public class LeetCode21 {
 
     @Test
     public void test() {
-        ListNode l1 = new ListNode(1,new ListNode(2,new ListNode(4)));
-        ListNode l2 = new ListNode(1,new ListNode(3,new ListNode(4)));
+        ListNode l1 = new ListNode(1, new ListNode(2, new ListNode(4)));
+        ListNode l2 = new ListNode(1, new ListNode(3, new ListNode(4)));
         ListNode listNode = mergeTwoLists(l1, l2);
 
-        while (listNode != null){
+        while (listNode != null) {
             int val = listNode.val;
             System.out.println(val);
             listNode = listNode.next;
@@ -31,12 +31,12 @@ public class LeetCode21 {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         //遍历两个ListNode，获取全部val存入list中
         List<Integer> arrayList = new ArrayList<>();
-        while (list1 != null){
+        while (list1 != null) {
             int val = list1.val;
             arrayList.add(val);
             list1 = list1.next;
         }
-        while (list2 != null){
+        while (list2 != null) {
             int val = list2.val;
             arrayList.add(val);
             list2 = list2.next;
@@ -48,9 +48,9 @@ public class LeetCode21 {
         //再遍历取出排序后的元素，存入一个新的ListNode中
         ListNode listNode = new ListNode();
         ListNode nextNode = listNode;
-        for (Integer val: arrayList) {
-            listNode.val = val;
+        for (Integer val : arrayList) {
             nextNode.next = new ListNode(val);
+            nextNode = nextNode.next;
         }
 
         return listNode.next;
