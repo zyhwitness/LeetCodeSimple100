@@ -23,7 +23,7 @@ public class LeetCode35 {
             if (nums[i] == target) {
                 return i;
             }
-            if(target > nums[i]){
+            if (target > nums[i]) {
                 index = i + 1;
             }
         }
