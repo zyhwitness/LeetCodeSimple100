@@ -29,6 +29,7 @@ public class LeetCode88 {
         }
 
         //Arrays.sort(nums1);
+
         int temp;
         for (int i = 0; i < nums1.length - 1; i++) {
             for (int j = 0; j < nums1.length - 1 - i; j++) {
