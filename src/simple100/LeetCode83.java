@@ -28,7 +28,7 @@ public class LeetCode83 {
             return head;
         }
 
-        //为什么要赋值给新的node？
+        //为什么要赋值给新的 node？
         ListNode node = head;
         while (node.next != null) {
             Integer val = node.val;
