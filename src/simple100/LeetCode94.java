@@ -17,10 +17,10 @@ public class LeetCode94 {
     @Test
     public void test() {
 
-        TreeNode left = new TreeNode(3);
-        TreeNode right = new TreeNode(4);
+        TreeNode left = new TreeNode(3,new TreeNode(7),null);
+        TreeNode right = new TreeNode(4,null,new TreeNode(8));
         TreeNode root = new TreeNode(5, left, right);
-        inorderTraversal(root);
+        System.out.println(inorderTraversal(root));
     }
 
 
