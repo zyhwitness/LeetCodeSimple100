@@ -36,7 +36,6 @@ public class LeetCode94 {
         nextNode(root, list);
 
         return list;
-
     }
 
     /**
