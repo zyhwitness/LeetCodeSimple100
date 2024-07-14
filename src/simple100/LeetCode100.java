@@ -40,8 +40,8 @@ public class LeetCode100 {
         nextNode(p, listP);
         nextNode(q, listQ);
 
-        //System.out.println(listP);
-        //System.out.println(listQ);
+        System.out.println(listP);
+        System.out.println(listQ);
 
         return listP.equals(listQ);
 
