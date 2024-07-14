@@ -25,20 +25,20 @@ public class LeetCode100 {
 
     public boolean isSameTree(TreeNode p, TreeNode q) {
 
-        if(p == null && q == null){
+        if (p == null && q == null) {
             return true;
         }
-        if(p == null){
+        if (p == null) {
             return false;
         }
-        if(q == null){
+        if (q == null) {
             return false;
         }
 
         List<Integer> listP = new ArrayList<>();
         List<Integer> listQ = new ArrayList<>();
-        nextNode(p,listP);
-        nextNode(q,listQ);
+        nextNode(p, listP);
+        nextNode(q, listQ);
 
         //System.out.println(listP);
         //System.out.println(listQ);
@@ -47,19 +47,22 @@ public class LeetCode100 {
 
     }
 
+    /**
+     * 先看根节点，再看左右
+     */
     public void nextNode(TreeNode root, List<Integer> list) {
 
         list.add(root.val);
 
         if (root.left != null) {
             nextNode(root.left, list);
-        }else {
+        } else {
             list.add(null);
         }
 
         if (root.right != null) {
             nextNode(root.right, list);
-        }else {
+        } else {
             list.add(null);
         }
     }
