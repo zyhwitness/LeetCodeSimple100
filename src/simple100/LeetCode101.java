@@ -20,7 +20,6 @@ public class LeetCode101 {
         TreeNode right = new TreeNode(4,  new TreeNode(8),null);
         TreeNode root = new TreeNode(5, left, right);
         System.out.println(isSymmetric(root));
-
     }
 
     public boolean isSymmetric(TreeNode root) {
