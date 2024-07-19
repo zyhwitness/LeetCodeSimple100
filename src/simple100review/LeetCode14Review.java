@@ -12,7 +12,7 @@ public class LeetCode14Review {
 
     @Test
     public void test() {
-        String[] str = {"abc", "abd", "abc", "abddds"};
+        String[] str = {"abc", "abd", "abc", "abcs"};
         System.out.println(longestCommonPrefix(str));
     }
 
