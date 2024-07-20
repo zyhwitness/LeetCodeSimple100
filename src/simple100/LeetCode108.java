@@ -23,12 +23,16 @@ public class LeetCode108 {
     }
 
     public TreeNode nextNode(int left, int right, int[] nums) {
-        if(left > right){
+        //当左边界大于右边界时，此节点不再有 val
+        if (left > right) {
             return null;
         }
+        //获取中间位置值作为当前节点的 val
         int mid = left + (right - left) / 2;
         TreeNode treeNode = new TreeNode(nums[mid]);
+        //递归左节点，此时右边界为 mid - 1
         treeNode.left = nextNode(left, mid - 1, nums);
+        //递归右节点，此时左边界为 mid + 1
         treeNode.right = nextNode(mid + 1, right, nums);
         return treeNode;
     }
