@@ -12,7 +12,8 @@ public class LeetCode111 {
 
     @Test
     public void test() {
-        TreeNode root = new TreeNode(2, null, new TreeNode(3, null, new TreeNode(4, null, new TreeNode(5, null, new TreeNode(6)))));
+        //TreeNode root = new TreeNode(2, null, new TreeNode(3, null, new TreeNode(4, null, new TreeNode(5, null, new TreeNode(6)))));
+        TreeNode root = new TreeNode(3, new TreeNode(9), new TreeNode(20, new TreeNode(15), new TreeNode(7)));
         System.out.println(minDepth(root));
     }
 
@@ -25,11 +26,14 @@ public class LeetCode111 {
         int miniLeft = minDepth(root.left);
         int miniRight = minDepth(root.right);
 
+        //若两边都为空，返回当前节点深度 1
         if (root.left == null && root.right == null) {
             return 1;
+            //若两边都有子节点，返回最小深度值
         } else if (root.left != null && root.right != null) {
             int min = Math.min(miniLeft, miniRight);
             return min + 1;
+            //若只有一边有子节点，返回最大深度值
         } else {
             int max = Math.max(miniLeft, miniRight);
             return max + 1;
