@@ -28,7 +28,7 @@ public class LeetCode21 {
             listNode = listNode.next;
         }
 
-        //当不传入val时，val默认是0
+        //当不传入val时，val默认是0，next默认是null
         ListNode l3 = new ListNode();
         System.out.println(l3.val);
 
@@ -58,20 +58,19 @@ public class LeetCode21 {
         //再遍历取出排序后的数字，嵌套存入一个新的ListNode中
         //1 2 3 4
         //new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4))))
-        ListNode nextNode = new ListNode();
-        ListNode listNode = nextNode;
+
+        //listNode 和 nextNode 在初始时是相等的，都指向初始节点
+        ListNode listNode = new ListNode();
+        ListNode nextNode = listNode;
 
         for (Integer val : arrayList) {
-            //遍历取第一个数字1，此时listNode = nextNode = new ListNode(0, new ListNode(1))，0为默认val
-            //再遍历取第二个数字2，此时nextNode = new ListNode(1,new ListNode(2)),
-            //再遍历取第三个数字3，此时nextNode = new ListNode(2,new ListNode(3)),
+
+            //nextNode 在每次循环迭代中都会更新为新创建的节点
             nextNode.next = new ListNode(val);
-            //再将nextNode.next赋值给nextNode，此时nextNode = new ListNode(1)
-            //再将nextNode.next赋值给nextNode，此时nextNode = new ListNode(2)
-            //再将nextNode.next赋值给nextNode，此时nextNode = new ListNode(3)
             nextNode = nextNode.next;
         }
 
+        //listNode 用于保持对链表头的引用，而 nextNode 用于在链表中插入新节点并移动到链表的末尾
         return listNode.next;
 
     }
