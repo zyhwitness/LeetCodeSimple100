@@ -14,6 +14,9 @@ public class LeetCode168 {
     public void test() {
         int columnNumber = 701;
         System.out.println(convertToTitle(columnNumber));
+
+        char c = (char) (20 + 'A');
+        System.out.println(c);
     }
 
     public String convertToTitle(int columnNumber) {
