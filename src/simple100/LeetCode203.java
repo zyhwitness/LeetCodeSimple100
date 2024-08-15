@@ -19,11 +19,13 @@ public class LeetCode203 {
         head.next = node1;
         node1.next = node2;
         node2.next = node3;
-        int val = 1;
-        /*while (head != null){
-            System.out.println(head.val);
-            head = head.next;
-        }*/
+        int val = 2;
+        ListNode oldHead = head;
+        while (oldHead != null) {
+            System.out.println(oldHead.val);
+            oldHead = oldHead.next;
+        }
+        System.out.println("----------------");
         ListNode newHead = removeElements(head, val);
         while (newHead != null) {
             System.out.println(newHead.val);
