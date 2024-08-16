@@ -19,7 +19,7 @@ public class LeetCode203 {
         head.next = node1;
         node1.next = node2;
         node2.next = node3;
-        int val = 2;
+        int val = 1;
         ListNode oldHead = head;
         while (oldHead != null) {
             System.out.println(oldHead.val);
