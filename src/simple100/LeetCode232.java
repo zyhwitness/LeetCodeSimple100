@@ -25,7 +25,7 @@ public class LeetCode232 {
     }
 
     class MyQueue {
-
+        //stack.push()：入栈；  stack.pop()：出栈，返回并推出顶部元素；  stack.peek()：返回顶部元素
         Stack<Integer> stackOut;
         Stack<Integer> stackIn;
 
@@ -43,6 +43,7 @@ public class LeetCode232 {
                 Integer pop = stackOut.pop();
                 stackIn.push(pop);
             }
+            //pop()返回并推出in栈的顶部元素，也就是out栈的底部元素
             Integer val = stackIn.pop();
             while (!stackIn.isEmpty()) {
                 Integer pop = stackIn.pop();
@@ -52,12 +53,15 @@ public class LeetCode232 {
         }
 
         public int peek() {
-            //栈：先进后出；队列：先进先出
+            //栈：先进后出；队列：先进先出。
             while (!stackOut.isEmpty()) {
                 Integer pop = stackOut.pop();
                 stackIn.push(pop);
             }
+            //将out栈的元素取出再添加到in栈里，因为先进后出，使得in栈里的元素顺序正好相反
+            //添加完毕后再peek()，获取的是in栈的顶部元素也就是out栈的底部元素
             Integer val = stackIn.peek();
+            //再将in栈元素取出放回out栈里
             while (!stackIn.isEmpty()) {
                 Integer pop = stackIn.pop();
                 stackOut.push(pop);
