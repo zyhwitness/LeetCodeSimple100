@@ -3,6 +3,7 @@ package simple100;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ public class LeetCode15 {
 
     public List<List<Integer>> threeSum(int[] nums) {
 
+        Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
             int left = i + 1;
@@ -38,6 +40,7 @@ public class LeetCode15 {
                     list.add(nums[left]);
                     list.add(nums[right]);
                     result.add(list);
+                    left = right;
                 }
             }
         }
