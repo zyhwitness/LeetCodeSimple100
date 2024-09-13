@@ -16,7 +16,7 @@ public class LeetCode15 {
 
     @Test
     public void test() {
-        int[] nums = {-1, 0, 1, 2, -1, -4};
+        int[] nums = {-2, 0, 3, -1, 4, 0, 3, 4, 1, 1, 1, -3, -5, 4, 0};
         System.out.println(threeSum(nums));
     }
 
@@ -25,6 +25,12 @@ public class LeetCode15 {
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                break;
+            }
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
             int left = i + 1;
             int right = nums.length - 1;
 
@@ -35,12 +41,16 @@ public class LeetCode15 {
                 } else if (sum > 0) {
                     right--;
                 } else {
-                    List<Integer> list = new ArrayList<>();
-                    list.add(nums[i]);
-                    list.add(nums[left]);
-                    list.add(nums[right]);
-                    result.add(list);
-                    left = right;
+                    result.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                    while (left < right && nums[left] == nums[left + 1]) {
+                        left++;
+
+                    }
+                    while (left < right && nums[right] == nums[right - 1]) {
+                        right--;
+                    }
+                    left++;
+                    right--;
                 }
             }
         }
