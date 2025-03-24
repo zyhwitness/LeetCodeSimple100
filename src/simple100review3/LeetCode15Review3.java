@@ -53,4 +53,34 @@ public class LeetCode15Review3 {
         }
         return result;
     }
+
+    public List<List<Integer>> threeSum1(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        // 先对数组进行从小到大排序
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            int left = nums[i + 1], right = nums[nums.length - 1];
+            while (left < right) {
+                if (nums[i] + left + right == 0) {
+                    result.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                    left++;
+                    while (left < right && nums[left] == nums[left - 1]) {
+                        left++;
+                    }
+                } else if (nums[i] + left + right < 0) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    // 先将数组从小到大排序 Arrays.sort，遍历数组。进行去重判断，定义 left、right，当 left 小于 right 时循环，判断三数之和。
+    // 若小于 0，left++；若大于 0，right--；若等于 0，添加到 result，left++，进行去重判断。
 }
