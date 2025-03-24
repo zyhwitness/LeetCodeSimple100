@@ -23,7 +23,7 @@ public class LeetCode26Review3 {
         System.out.println(removeDuplicates(nums));
     }
 
-    public int removeDuplicates(int[] nums) {
+    public int removeDuplicates1(int[] nums) {
         int index = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[index] != nums[i]) {
@@ -34,4 +34,16 @@ public class LeetCode26Review3 {
     }
 
     // 设置一个初始索引 0，遍历数组，寻找不等于索引位置的值，索引后移，并将改值赋给索引位。
+
+    public int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+
+        int slow = 0; // 慢指针，指向去重后数组的最后一个位置
+        for (int fast = 1; fast < nums.length; fast++) { // 快指针，从1开始遍历
+            if (nums[slow] != nums[fast]) { // 找到新的唯一元素
+                nums[++slow] = nums[fast]; // 先移动slow，再赋值
+            }
+        }
+        return slow + 1; // 数组长度是索引+1
+    }
 }
