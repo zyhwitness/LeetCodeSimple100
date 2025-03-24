@@ -19,7 +19,6 @@ public class LeetCode1Review3 {
         System.out.println(Arrays.toString(twoSum(nums, target)));
     }
 
-
     public int[] twoSum(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
@@ -30,4 +29,6 @@ public class LeetCode1Review3 {
         }
         return null;
     }
+
+    // 两层循环遍历，内层从 i + 1 开始，判断和是否为目标值。
 }
