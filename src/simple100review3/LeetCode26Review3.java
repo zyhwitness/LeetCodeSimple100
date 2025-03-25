@@ -19,11 +19,11 @@ public class LeetCode26Review3 {
 
     @Test
     public void test() {
-        int[] nums = {1, 1, 1, 2, 2, 3, 4, 5, 5};
-        System.out.println(removeDuplicates(nums));
+        int[] nums = {1, 1, 1, 2, 2, 3, 4, 5, 5, 6, 6, 7, 7, 7};
+        System.out.println(removeDuplicates2(nums));
     }
 
-    public int removeDuplicates1(int[] nums) {
+    public int removeDuplicates(int[] nums) {
         int index = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[index] != nums[i]) {
@@ -35,7 +35,7 @@ public class LeetCode26Review3 {
 
     // 设置一个初始索引 0，遍历数组，寻找不等于索引位置的值，索引后移，并将改值赋给索引位。
 
-    public int removeDuplicates(int[] nums) {
+    public int removeDuplicates1(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
 
         int slow = 0; // 慢指针，指向去重后数组的最后一个位置
@@ -45,5 +45,19 @@ public class LeetCode26Review3 {
             }
         }
         return slow + 1; // 数组长度是索引+1
+    }
+
+    public int removeDuplicates2(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int slow = 0;
+        for (int fast = 0; fast < nums.length; fast++) {
+            if (nums[slow] != nums[fast]) {
+                nums[++slow] = nums[fast];
+            }
+        }
+        return ++slow;
     }
 }
