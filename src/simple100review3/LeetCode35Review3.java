@@ -53,5 +53,6 @@ public class LeetCode35Review3 {
         return index;
     }
 
+    // 定义初始索引为 0，遍历数组，与目标值比较，若目标值大，索引就移到数组值后面一位。
 
 }
