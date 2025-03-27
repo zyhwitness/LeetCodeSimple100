@@ -43,4 +43,8 @@ public class LeetCode119Review3 {
 
         return resultList.get(rowIndex);
     }
+
+    // 第 i 行，该行就有 i 个元素
+    // 每行首尾元素都为 1
+    // 其余位置上元素等于上一行同位置和前一位元素之和
 }
