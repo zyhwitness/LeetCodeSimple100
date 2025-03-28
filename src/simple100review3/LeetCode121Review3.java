@@ -19,7 +19,7 @@ public class LeetCode121Review3 {
     @Test
     public void test() {
         int[] prices = {8, 20, 5, 15};
-        System.out.println(maxProfit(prices));
+        System.out.println(maxProfit1(prices));
     }
 
     /**
@@ -44,5 +44,23 @@ public class LeetCode121Review3 {
         return maxProfit;
     }
 
-    // 只要遍历到更低的价格，就以改天价格为准，算往后的最大利润
+    public int maxProfit1(int[] prices) {
+        int lowestPrice = prices[0];
+        int maxProfit = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < lowestPrice) {
+                lowestPrice = prices[i];
+                continue;
+            }
+
+            if (prices[i] - lowestPrice > maxProfit) {
+                maxProfit = prices[i] - lowestPrice;
+            }
+        }
+
+        return maxProfit;
+    }
+
+    // 只要遍历到更低的价格，就以该天价格为准，算往后的最大利润。
+    // why？因为只要碰到更低的价格，那么后面再碰到更高的价格，那么以这个更低价格来算的利润一定更大，例如：8、20、5、30。
 }
