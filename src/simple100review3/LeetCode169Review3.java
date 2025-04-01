@@ -19,8 +19,8 @@ public class LeetCode169Review3 {
 
     @Test
     public void test() {
-        int[] nums = {1};
-        System.out.println(majorityElement(nums));
+        int[] nums = {1, 3, 3};
+        System.out.println(majorityElement1(nums));
     }
 
     public int majorityElement(int[] nums) {
@@ -41,4 +41,28 @@ public class LeetCode169Review3 {
         }
         return 0;
     }
+
+    public int majorityElement1(int[] nums) {
+        if(nums.length == 1){
+            return nums[0];
+        }
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if(!map.containsKey(nums[i])){
+                map.put(nums[i], 1);
+            }else {
+                if(map.get(nums[i]) + 1 > nums.length / 2){
+                    return nums[i];
+                }else {
+                    map.replace(nums[i], map.get(nums[i] + 1));
+                }
+            }
+        }
+        return 0;
+    }
+
+    // 1、只有一个元素的情况，直接返回该元素
+    // 2、遍历数组，放入map中，key为元素，值为count。
+    // 若不存在，则put；若存在，则取count + 1 与 n / 2 进行比较
+    // （注意是 count + 1，因为 count 是之前的出现次数，+ 1 是本次遍历又遇到的）
 }
