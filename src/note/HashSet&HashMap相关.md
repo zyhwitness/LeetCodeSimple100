@@ -9,3 +9,7 @@
 ## 205、同构字符串
 
 给定两个字符串 s 和 t ，判断它们是否结构相同。可以遍历两个字符串的每一位，放入两个 map 中，mapS key 为 sI，值为 tI；mapT key 为 tI，值为 sI。
+
+## 217 & 219 & 220、存在重复元素 I、II、III
+
+分别可用 HashSet、HashMap、TreeSet 来解决
