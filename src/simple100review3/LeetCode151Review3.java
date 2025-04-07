@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -16,7 +17,7 @@ public class LeetCode151Review3 {
 
     @Test
     public void test() {
-        System.out.println(reverseWords("  hello world  "));
+        System.out.println(reverseWords2("  hello world  "));
     }
 
     public String reverseWords(String s) {
@@ -43,6 +44,23 @@ public class LeetCode151Review3 {
                 continue;
             }
             reverse = reverse + list.get(i) + " ";
+        }
+
+        return reverse.substring(0, reverse.length() - 1);
+    }
+
+    public String reverseWords2(String s) {
+        if (s.trim().isEmpty()) {
+            return "";
+        }
+        String reverse = "";
+        List<String> list = Arrays.asList(s.split(" "));
+        List<String> collect = list.stream()
+                .filter(s1 -> !s1.isEmpty())
+                .collect(Collectors.toList());
+
+        for (int i = collect.size() - 1; i >= 0; i--) {
+            reverse = reverse + collect.get(i) + " ";
         }
 
         return reverse.substring(0, reverse.length() - 1);
