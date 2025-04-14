@@ -17,7 +17,7 @@ public class LeetCode101 {
     public void test() {
 
         TreeNode left = new TreeNode(4, new TreeNode(8), null);
-        TreeNode right = new TreeNode(4,  new TreeNode(8),null);
+        TreeNode right = new TreeNode(4, null, new TreeNode(8));
         TreeNode root = new TreeNode(5, left, right);
         System.out.println(isSymmetric(root));
     }
@@ -47,7 +47,7 @@ public class LeetCode101 {
     }
 
     /**
-     *根据类型不同往 list 中添加顺序不一样
+     * 根据类型不同往 list 中添加顺序不一样
      */
     public void nextNode(TreeNode root, List<Integer> list, int type) {
 
