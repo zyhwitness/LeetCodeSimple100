@@ -37,6 +37,20 @@ public class LeetCode101Review3 {
         return isMirror(left.left, right.right) && isMirror(left.right, right.left);
     }
 
+    private boolean isMirror1(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        }
+        if (left == null || right == null) {
+            return false;
+        }
+        if (left.val != right.val) {
+            return false;
+        }
+        return isMirror1(left.left, right.right) && isMirror1(left.right, right.left);
+
+    }
+
     /**
      * Definition for a binary tree node.
      */

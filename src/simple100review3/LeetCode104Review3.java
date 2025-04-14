@@ -31,6 +31,18 @@ public class LeetCode104Review3 {
 
     }
 
+    public int maxDepth2(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int leftMax = maxDepth2(root.left);
+        int rightMax = maxDepth2(root.right);
+
+        int max = Math.max(leftMax, rightMax);
+        return max + 1;
+    }
+
     /**
      * Definition for a binary tree node.
      */
