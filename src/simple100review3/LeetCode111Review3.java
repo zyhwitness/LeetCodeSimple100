@@ -34,6 +34,21 @@ public class LeetCode111Review3 {
         }
     }
 
+    public int minDepth1(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftMin = minDepth1(root.left);
+        int rightMin = minDepth1(root.right);
+        if (root.left == null && root.right == null) {
+            return 1;
+        } else if (root.left != null && root.right != null) {
+            return Math.min(leftMin, rightMin) + 1;
+        } else {
+            return Math.max(leftMin, rightMin) + 1;
+        }
+    }
+
     /**
      * Definition for a binary tree node.
      */
