@@ -48,7 +48,21 @@ public class LeetCode101Review3 {
             return false;
         }
         return isMirror1(left.left, right.right) && isMirror1(left.right, right.left);
+    }
 
+    private boolean isMirror2(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        }
+
+        if (left == null || right == null) {
+            return false;
+        }
+
+        if (left.val != right.val) {
+            return false;
+        }
+        return isMirror2(left.left, right.right) && isMirror2(left.right, right.left);
     }
 
     /**
