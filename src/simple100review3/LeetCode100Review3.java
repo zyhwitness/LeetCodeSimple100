@@ -31,33 +31,36 @@ public class LeetCode100Review3 {
             return false;
         }
 
-        List<Integer> pList = new ArrayList<>();
-        List<Integer> qList = new ArrayList<>();
-        nextNode(p, pList);
-        nextNode(q, qList);
+        List<Integer> plist = new ArrayList<>();
+        List<Integer> qlist = new ArrayList<>();
 
-        return pList.equals(qList);
+        nextNode(plist, p);
+        nextNode(qlist, q);
 
+        return plist.equals(qlist);
     }
 
     /**
      * 先看根节点，再看左右
      */
-    public void nextNode(TreeNode root, List<Integer> list) {
-        list.add(root.val);
+    private void nextNode(List<Integer> list, TreeNode treeNode) {
 
-        if (root.left != null) {
-            nextNode(root.left, list);
+        list.add(treeNode.val);
+
+        if (treeNode.left != null) {
+            nextNode(list, treeNode.left);
         } else {
             list.add(null);
         }
 
-        if (root.right != null) {
-            nextNode(root.right, list);
+        if (treeNode.right != null) {
+            nextNode(list, treeNode.right);
         } else {
             list.add(null);
         }
+
     }
+
 
     /**
      * Definition for a binary tree node.
