@@ -18,7 +18,7 @@ public class LeetCode257Review3 {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2, new TreeNode(3), new TreeNode(4));
         root.right = new TreeNode(5, new TreeNode(6), new TreeNode(7));
-        System.out.println(binaryTreePaths(root));
+        System.out.println(binaryTreePaths1(root));
     }
 
     public List<String> binaryTreePaths(TreeNode root) {
@@ -50,6 +50,38 @@ public class LeetCode257Review3 {
         // 其实只要在上面用 new StringBuilder(sb)，下面就可以用 sb，目的就是在进行下一轮时对于左右边分别拼接；
         // 而如果上面用 sb，下面用 new StringBuilder(sb)，拼接右边时就会把左边的带上。
         // 当然最好是都用 new StringBuilder(sb)，这样更清晰表明，下一轮左右拼接都是基于上一轮的头。
+    }
+
+    public List<String> binaryTreePaths1(TreeNode root) {
+        List<String> list = new ArrayList<>();
+
+        if (root == null) {
+            return list;
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        nextNode1(list, sb, root);
+
+        return list;
+    }
+
+    private void nextNode1(List<String> list, StringBuilder sb, TreeNode treeNode) {
+
+        if (treeNode == null) {
+            return;
+        }
+
+        sb.append("->").append(treeNode.val);
+
+        if (treeNode.left == null && treeNode.right == null) {
+            list.add(sb.substring(2));
+            return;
+        }
+
+        nextNode1(list, new StringBuilder(sb), treeNode.left);
+        nextNode1(list, new StringBuilder(sb), treeNode.right);
+
     }
 
     /**
