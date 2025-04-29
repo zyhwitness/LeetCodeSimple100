@@ -49,7 +49,29 @@ public class LeetCode160Review3 {
     }
 
     public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
-        return null;
+        if (headA == null && headB == null) {
+            return null;
+        }
+
+        ListNode h1 = headA;
+        ListNode h2 = headB;
+
+        while (h1 != h2) {
+            h1 = h1.next;
+            h2 = h2.next;
+
+            if (h1 == null && h2 == null) {
+                return null;
+            }
+            if (h1 == null) {
+                h1 = headB;
+            }
+            if (h2 == null) {
+                h2 = headA;
+            }
+        }
+
+        return h1;
     }
 
     /**
