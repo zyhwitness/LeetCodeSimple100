@@ -2,8 +2,9 @@ package hot100;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.List;
 
 /**
  * @Description: 合并区间
@@ -23,7 +24,7 @@ public class LeetCode56 {
 
     @Test
     public void test() {
-        int[][] intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
+        int[][] intervals = {{1, 3}, {2, 6}, {5, 10}, {15, 18}};
         int[][] result = merge(intervals);
 
 
@@ -39,10 +40,20 @@ public class LeetCode56 {
         // 按每个区间的起始位置从小到大排序，也就是比较每个元素数组的第一个元素值
         Arrays.sort(intervals, (o1, o2) -> o1[0] - o2[0]);
 
-        for (int[] interval : intervals) {
+        List<int[]> list = new ArrayList<>();
+        list.add(intervals[0]);
 
+        for (int i = 1; i < intervals.length; i++) {
+
+            if (intervals[i - 1][1] >= intervals[i][0]) {
+                intervals[i] = new int[]{intervals[i - 1][0], Math.max(intervals[i][1], intervals[i - 1][1])};
+                list.add(intervals[i]);
+                list.remove(intervals[i - 1]);
+            } else {
+                list.add(intervals[i]);
+            }
         }
 
-        return null;
+        return list.toArray(new int[0][]);
     }
 }
