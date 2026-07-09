@@ -24,11 +24,11 @@ public class LeetCode56 {
 
     @Test
     public void test() {
-        int[][] intervals = {{1, 3}, {2, 6}, {5, 10}, {15, 18}};
+        int[][] intervals = {{1, 2}, {3, 4}, {2, 5}, {6, 7}};
         int[][] result = merge(intervals);
 
 
-        System.out.println(Arrays.deepToString(result)); // 输出: [[1, 6], [8, 10], [15, 18]]
+        System.out.println(Arrays.deepToString(result));
     }
 
     public int[][] merge(int[][] intervals) {
@@ -45,10 +45,12 @@ public class LeetCode56 {
 
         for (int i = 1; i < intervals.length; i++) {
 
-            if (intervals[i - 1][1] >= intervals[i][0]) {
-                intervals[i] = new int[]{intervals[i - 1][0], Math.max(intervals[i][1], intervals[i - 1][1])};
-                list.add(intervals[i]);
-                list.remove(intervals[i - 1]);
+            // 取list中最后一个数组
+            int[] last = list.get(list.size() - 1);
+
+            if (last[1] >= intervals[i][0]) {
+                // 若有重叠，则修改该数组的右边界
+                last[1] = Math.max(last[1], intervals[i][1]);
             } else {
                 list.add(intervals[i]);
             }
