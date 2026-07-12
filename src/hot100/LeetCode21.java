@@ -16,7 +16,7 @@ public class LeetCode21 {
     public void test() {
         ListNode l1 = new ListNode(1, new ListNode(2, new ListNode(4)));
         ListNode l2 = new ListNode(3, new ListNode(6, new ListNode(5)));
-        ListNode listNode = mergeTwoLists(l1, l2);
+        ListNode listNode = mergeTwoLists1(l1, l2);
 
         while (listNode != null) {
             //取出构造函数里传入的数字
@@ -26,12 +26,15 @@ public class LeetCode21 {
             listNode = listNode.next;
         }
 
-        //当不传入val时，val默认是0，next默认是null
-        ListNode l3 = new ListNode();
-        System.out.println(l3.val);
-
     }
 
+    /**
+     * 遍历放入list中排序再转成链表
+     *
+     * @param list1
+     * @param list2
+     * @return
+     */
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         List<Integer> list = new ArrayList<>();
         while (list1 != null) {
@@ -51,6 +54,37 @@ public class LeetCode21 {
         for (Integer i : list) {
             next.next = new ListNode(i);
             next = next.next;
+        }
+
+        return merged.next;
+    }
+
+    /**
+     * 双指针，一个指向头节点，另一个向后移动
+     * @param list1
+     * @param list2
+     * @return
+     */
+    public ListNode mergeTwoLists1(ListNode list1, ListNode list2) {
+        ListNode merged = new ListNode();
+        ListNode next = merged;
+
+        while (list1 != null && list2 != null) {
+            if (list1.val <= list2.val) {
+                next.next = new ListNode(list1.val);
+                list1 = list1.next;
+            } else {
+                next.next = new ListNode(list2.val);
+                list2 = list2.next;
+            }
+
+            next = next.next;
+        }
+
+        if (list1 != null) {
+            next.next = list1;
+        } else {
+            next.next = list2;
         }
 
         return merged.next;
