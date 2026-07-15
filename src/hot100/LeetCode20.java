@@ -2,9 +2,7 @@ package hot100;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @Description: 有效的括号
@@ -42,6 +40,37 @@ public class LeetCode20 {
                 stack.pop();
             } else {
                 stack.push(c);
+            }
+        }
+
+        return stack.isEmpty();
+    }
+
+    public boolean isValid2(String s) {
+        Deque<Character> stack = new ArrayDeque<>();
+
+        for (char c : s.toCharArray()) {
+            switch (c) {
+                case '(':
+                case '[':
+                case '{':
+                    stack.push(c);
+                    break;
+
+                case ')':
+                    if (stack.isEmpty() || stack.pop() != '(')
+                        return false;
+                    break;
+
+                case ']':
+                    if (stack.isEmpty() || stack.pop() != '[')
+                        return false;
+                    break;
+
+                case '}':
+                    if (stack.isEmpty() || stack.pop() != '{')
+                        return false;
+                    break;
             }
         }
 
