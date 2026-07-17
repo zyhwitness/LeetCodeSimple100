@@ -26,20 +26,20 @@ public class LeetCode11 {
 
     public int maxArea(int[] height) {
 
-        int max = 0;
-        int i = 0, j = height.length - 1;
-        while (i < j) {
-            int size = (j - i) * Math.min(height[i], height[j]);
-            max = Math.max(max, size);
-            if (height[i] < height[j]) {
-                i++;
+        int left = 0, right = height.length - 1, maxArea = 0;
+
+        while (left < right) {
+            if (height[left] < height[right]) {
+                int max = (right - left) * height[left];
+                maxArea = Math.max(maxArea, max);
+                left++;
             } else {
-                j--;
+                int max = (right - left) * height[right];
+                maxArea = Math.max(maxArea, max);
+                right--;
             }
         }
 
-        return max;
+        return maxArea;
     }
-
-    //
 }
