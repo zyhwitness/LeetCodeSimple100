@@ -58,6 +58,7 @@ public class LeetCode20 {
                     break;
 
                 case ')':
+                    // 注意比较的时候用 pop，用 peak 也可以但记得之后也要 pop
                     if (stack.isEmpty() || stack.pop() != '(')
                         return false;
                     break;
